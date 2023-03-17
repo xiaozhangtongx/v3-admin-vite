@@ -49,7 +49,7 @@ onUnmounted(() => {
 <template>
   <div @click="click">
     <el-tooltip effect="dark" :content="tips" placement="bottom">
-      <svg-icon :name="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" />
+      <svg-icon :name="isFullscreen ? 'i-ri-fullscreen-exit-fill' : 'i-ri-fullscreen-fill'" />
     </el-tooltip>
   </div>
 </template>

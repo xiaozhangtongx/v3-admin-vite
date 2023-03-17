@@ -1,11 +1,9 @@
 /// <reference types="vitest" />
 
-import path, { resolve } from 'node:path'
+import { resolve } from 'node:path'
 import { type ConfigEnv, type UserConfigExport, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import svgLoader from 'vite-svg-loader'
 import UnoCSS from 'unocss/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -73,13 +71,6 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
     plugins: [
       vue(),
       vueJsx(),
-      /** 将 SVG 静态图转化为 Vue 组件 */
-      svgLoader(),
-      /** SVG */
-      createSvgIconsPlugin({
-        iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
-        symbolId: 'icon-[dir]-[name]',
-      }),
       /** UnoCSS */
       UnoCSS(),
       /** DefineOptions 可以更简单的注册组件名称 */

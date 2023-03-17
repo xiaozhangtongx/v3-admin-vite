@@ -3,6 +3,7 @@ import { type RouteRecordRaw, createRouter, createWebHashHistory, createWebHisto
 const Layout = () => import('@/layout/index.vue')
 
 /** 常驻路由 */
+// @unocss-include
 export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/redirect',
@@ -50,7 +51,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: 'Dashboard',
         meta: {
           title: '首页',
-          svgIcon: 'dashboard',
+          svgIcon: 'i-material-symbols-dashboard-rounded',
           affix: true,
         },
       },
@@ -67,7 +68,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: 'UnoCSS',
         meta: {
           title: 'unocss',
-          svgIcon: 'unocss',
+          svgIcon: 'i-simple-icons-unocss',
         },
       },
     ],
@@ -77,12 +78,12 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: Layout,
     children: [
       {
-        path: 'https://juejin.cn/post/7089377403717287972',
+        path: 'https://github.com/xiaozhangtongx',
         component: () => {},
         name: 'Link',
         meta: {
           title: '外链',
-          svgIcon: 'link',
+          svgIcon: 'i-bi-github',
         },
       },
     ],
@@ -94,7 +95,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     name: 'Table',
     meta: {
       title: '表格',
-      elIcon: 'Grid',
+      svgIcon: 'i-material-symbols-table-chart',
     },
     children: [
       {
@@ -124,7 +125,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     name: 'Menu',
     meta: {
       title: '多级菜单',
-      svgIcon: 'menu',
+      svgIcon: 'i-material-symbols-menu',
     },
     children: [
       {
@@ -198,7 +199,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     name: 'HookDemo',
     meta: {
       title: 'hook 示例',
-      elIcon: 'Menu',
+      svgIcon: 'i-mdi-hook',
       alwaysShow: true,
     },
     children: [
@@ -235,7 +236,7 @@ export const asyncRoutes: RouteRecordRaw[] = [
     name: 'Permission',
     meta: {
       title: '权限管理',
-      svgIcon: 'lock',
+      svgIcon: 'i-material-symbols-lock-person',
       roles: ['admin', 'editor'], // 可以在根路由中设置角色
       alwaysShow: true, // 将始终显示根菜单
     },

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Bell } from '@element-plus/icons-vue'
 import NotifyList from './NotifyList.vue'
 import { type IListItem, messageData, notifyData, todoData } from './data'
 
@@ -61,9 +60,7 @@ const handleHistory = () => {
       <template #reference>
         <el-badge :value="badgeValue" :max="badgeMax" :hidden="badgeValue === 0">
           <el-tooltip effect="dark" content="消息通知" placement="bottom">
-            <el-icon :size="20">
-              <Bell />
-            </el-icon>
+            <svg-icon class="i-ph-bell-simple-bold text-xl" />
           </el-tooltip>
         </el-badge>
       </template>

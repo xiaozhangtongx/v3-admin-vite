@@ -57,6 +57,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.36.0",
+    "@iconify/json": "^2.2.36",
     "@types/js-cookie": "^3.0.3",
     "@types/lodash-es": "^4.17.7",
     "@types/node": "^18.15.3",
@@ -77,8 +78,6 @@
     "unplugin-vue-components": "^0.24.1",
     "unplugin-vue-define-options": "^1.2.4",
     "vite": "^4.1.4",
-    "vite-plugin-svg-icons": "^2.0.1",
-    "vite-svg-loader": "^4.0.0",
     "vitest": "^0.29.3",
     "vue-tsc": "^1.2.0"
   },

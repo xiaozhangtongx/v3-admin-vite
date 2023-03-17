@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetUno } from 'unocss'
+import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 
 export default defineConfig({
   /** 排除 */
@@ -9,14 +9,15 @@ export default defineConfig({
     presetAttributify(),
     /** 默认预设 */
     presetUno(),
+    // 图标预设
+    presetIcons({
+      extraProperties: {
+        'display': 'inline-block',
+        'vertical-align': 'middle',
+      },
+      scale: 1.2,
+      warn: true,
+    }),
   ],
-  /** 自定义规则 */
-  rules: [['uno-padding-20', { padding: '20px' }]],
-  /** 自定义快捷方式 */
-  shortcuts: {
-    'uno-wh-full': 'w-full h-full',
-    'uno-flex-center': 'flex justify-center items-center',
-    'uno-flex-x-center': 'flex justify-center',
-    'uno-flex-y-center': 'flex items-center',
-  },
+  safelist: 'prose prose-sm m-auto text-left'.split(' '),
 })
