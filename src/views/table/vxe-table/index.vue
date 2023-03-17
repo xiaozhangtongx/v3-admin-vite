@@ -150,7 +150,6 @@ const xGridOpt: VxeGridProps = reactive({
     ajax: {
       query: ({ page, form }: VxeGridPropTypes.ProxyAjaxQueryParams) => {
         xGridOpt.loading = true
-        // eslint-disable-next-line @typescript-eslint/no-use-before-define
         crudStore.clearTable()
         return new Promise<any>((resolve: Function) => {
           let total = 0
@@ -219,7 +218,6 @@ const xFormOpt = reactive<VxeFormProps>({
           { props: { content: '取消' }, events: { click: () => xModalDom.value?.close() } },
           {
             props: { type: 'submit', content: '确定', status: 'primary' },
-            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             events: { click: () => crudStore.onSubmitForm() },
           },
         ],
