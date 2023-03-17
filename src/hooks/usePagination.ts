@@ -1,4 +1,4 @@
-import { reactive } from "vue"
+import { reactive } from 'vue'
 
 interface IDefaultPaginationData {
   total: number
@@ -22,7 +22,7 @@ const defaultPaginationData: IDefaultPaginationData = {
   currentPage: 1,
   pageSizes: [10, 20, 50],
   pageSize: 10,
-  layout: "total, sizes, prev, pager, next, jumper"
+  layout: 'total, sizes, prev, pager, next, jumper',
 }
 
 export function usePagination(_paginationData: IPaginationData = {}) {

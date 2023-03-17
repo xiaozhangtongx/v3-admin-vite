@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { getCurrentInstance, onMounted, ref, watch } from "vue"
-import { type RouteRecordRaw, useRoute, useRouter } from "vue-router"
-import { type ITagView, useTagsViewStore } from "@/store/modules/tags-view"
-import { usePermissionStore } from "@/store/modules/permission"
-import ScrollPane from "./ScrollPane.vue"
-import path from "path-browserify"
-import { Close } from "@element-plus/icons-vue"
+import { getCurrentInstance, onMounted, ref, watch } from 'vue'
+import { type RouteRecordRaw, useRoute, useRouter } from 'vue-router'
+import path from 'path-browserify'
+import { Close } from '@element-plus/icons-vue'
+import ScrollPane from './ScrollPane.vue'
+import { type ITagView, useTagsViewStore } from '@/store/modules/tags-view'
+import { usePermissionStore } from '@/store/modules/permission'
 
 const instance = getCurrentInstance()
 const router = useRouter()
@@ -27,7 +27,7 @@ const isAffix = (tag: ITagView) => {
   return tag.meta?.affix
 }
 
-const filterAffixTags = (routes: RouteRecordRaw[], basePath = "/") => {
+const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/') => {
   let tags: ITagView[] = []
   routes.forEach((route) => {
     if (route.meta?.affix) {
@@ -36,14 +36,13 @@ const filterAffixTags = (routes: RouteRecordRaw[], basePath = "/") => {
         fullPath: tagPath,
         path: tagPath,
         name: route.name,
-        meta: { ...route.meta }
+        meta: { ...route.meta },
       })
     }
     if (route.children) {
       const childTags = filterAffixTags(route.children, route.path)
-      if (childTags.length >= 1) {
+      if (childTags.length >= 1)
         tags = tags.concat(childTags)
-      }
     }
   })
   return tags
@@ -53,9 +52,8 @@ const initTags = () => {
   affixTags = filterAffixTags(permissionStore.routes)
   for (const tag of affixTags) {
     // 必须含有 name 属性
-    if (tag.name) {
+    if (tag.name)
       tagsViewStore.addVisitedView(tag)
-    }
   }
 }
 
@@ -68,21 +66,37 @@ const addTags = () => {
 
 const refreshSelectedTag = (view: ITagView) => {
   tagsViewStore.delCachedView(view)
-  router.replace({ path: "/redirect" + view.path, query: view.query })
+  router.replace({ path: `/redirect${view.path}`, query: view.query })
+}
+
+const toLastView = (visitedViews: ITagView[], view: ITagView) => {
+  const latestView = visitedViews.slice(-1)[0]
+  if (latestView !== undefined && latestView.fullPath !== undefined) {
+    router.push(latestView.fullPath)
+  }
+  else {
+    // 如果 TagsView 全部被关闭了，则默认重定向到主页
+    if (view.name === 'Dashboard') {
+      // 重新加载主页
+      router.push({ path: `/redirect${view.path}`, query: view.query })
+    }
+    else {
+      router.push('/')
+    }
+  }
 }
 
 const closeSelectedTag = (view: ITagView) => {
   tagsViewStore.delVisitedView(view)
   tagsViewStore.delCachedView(view)
-  if (isActive(view)) {
+  if (isActive(view))
     toLastView(tagsViewStore.visitedViews, view)
-  }
 }
 
 const closeOthersTags = () => {
-  if (selectedTag.value.fullPath !== route.path && selectedTag.value.fullPath !== undefined) {
+  if (selectedTag.value.fullPath !== route.path && selectedTag.value.fullPath !== undefined)
     router.push(selectedTag.value.fullPath)
-  }
+
   tagsViewStore.delOthersVisitedViews(selectedTag.value)
   tagsViewStore.delOthersCachedViews(selectedTag.value)
 }
@@ -90,25 +104,10 @@ const closeOthersTags = () => {
 const closeAllTags = (view: ITagView) => {
   tagsViewStore.delAllVisitedViews()
   tagsViewStore.delAllCachedViews()
-  if (affixTags.some((tag) => tag.path === route.path)) {
+  if (affixTags.some(tag => tag.path === route.path))
     return
-  }
-  toLastView(tagsViewStore.visitedViews, view)
-}
 
-const toLastView = (visitedViews: ITagView[], view: ITagView) => {
-  const latestView = visitedViews.slice(-1)[0]
-  if (latestView !== undefined && latestView.fullPath !== undefined) {
-    router.push(latestView.fullPath)
-  } else {
-    // 如果 TagsView 全部被关闭了，则默认重定向到主页
-    if (view.name === "Dashboard") {
-      // 重新加载主页
-      router.push({ path: "/redirect" + view.path, query: view.query })
-    } else {
-      router.push("/")
-    }
-  }
+  toLastView(tagsViewStore.visitedViews, view)
 }
 
 const openMenu = (tag: ITagView, e: MouseEvent) => {
@@ -121,11 +120,11 @@ const openMenu = (tag: ITagView, e: MouseEvent) => {
   const maxLeft = offsetWidth - menuMinWidth
   // 15: margin right
   const left15 = e.clientX - offsetLeft + 15
-  if (left15 > maxLeft) {
+  if (left15 > maxLeft)
     left.value = maxLeft
-  } else {
+  else
     left.value = left15
-  }
+
   top.value = e.clientY
   visible.value = true
   selectedTag.value = tag
@@ -141,16 +140,15 @@ watch(
     addTags()
   },
   {
-    deep: true
-  }
+    deep: true,
+  },
 )
 
 watch(visible, (value) => {
-  if (value) {
-    document.body.addEventListener("click", closeMenu)
-  } else {
-    document.body.removeEventListener("click", closeMenu)
-  }
+  if (value)
+    document.body.addEventListener('click', closeMenu)
+  else
+    document.body.removeEventListener('click', closeMenu)
 })
 
 onMounted(() => {
@@ -177,11 +175,19 @@ onMounted(() => {
         </el-icon>
       </router-link>
     </ScrollPane>
-    <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
-      <li @click="closeOthersTags">关闭其它</li>
-      <li @click="closeAllTags(selectedTag)">关闭所有</li>
+    <ul v-show="visible" :style="{ left: `${left}px`, top: `${top}px` }" class="contextmenu">
+      <li @click="refreshSelectedTag(selectedTag)">
+        刷新
+      </li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">
+        关闭
+      </li>
+      <li @click="closeOthersTags">
+        关闭其它
+      </li>
+      <li @click="closeAllTags(selectedTag)">
+        关闭所有
+      </li>
     </ul>
   </div>
 </template>

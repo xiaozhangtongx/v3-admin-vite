@@ -1,6 +1,6 @@
-import { watch, onBeforeMount, onMounted, onBeforeUnmount } from "vue"
-import { useRoute } from "vue-router"
-import { useAppStore, DeviceType } from "@/store/modules/app"
+import { onBeforeMount, onBeforeUnmount, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { DeviceType, useAppStore } from '@/store/modules/app'
 
 /** 参考 Bootstrap 的响应式设计 WIDTH = 992 */
 const WIDTH = 992
@@ -19,23 +19,21 @@ export default () => {
     if (!document.hidden) {
       const isMobile = _isMobile()
       appStore.toggleDevice(isMobile ? DeviceType.Mobile : DeviceType.Desktop)
-      if (isMobile) {
+      if (isMobile)
         appStore.closeSidebar(true)
-      }
     }
   }
 
   watch(
     () => route.name,
     () => {
-      if (appStore.device === DeviceType.Mobile && appStore.sidebar.opened) {
+      if (appStore.device === DeviceType.Mobile && appStore.sidebar.opened)
         appStore.closeSidebar(false)
-      }
-    }
+    },
   )
 
   onBeforeMount(() => {
-    window.addEventListener("resize", _resizeHandler)
+    window.addEventListener('resize', _resizeHandler)
   })
 
   onMounted(() => {
@@ -46,6 +44,6 @@ export default () => {
   })
 
   onBeforeUnmount(() => {
-    window.removeEventListener("resize", _resizeHandler)
+    window.removeEventListener('resize', _resizeHandler)
   })
 }

@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { ref } from "vue"
-import { Setting } from "@element-plus/icons-vue"
+import { ref } from 'vue'
+import { Setting } from '@element-plus/icons-vue'
 
 const props = defineProps({
   buttonTop: {
     type: Number,
-    default: 350
-  }
+    default: 350,
+  },
 })
 
-const buttonTopCss = props.buttonTop + "px"
+const buttonTopCss = `${props.buttonTop}px`
 const show = ref(false)
 </script>
 

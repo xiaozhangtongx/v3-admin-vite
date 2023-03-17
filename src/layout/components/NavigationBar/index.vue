@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { computed } from "vue"
-import { useRouter } from "vue-router"
-import { useAppStore } from "@/store/modules/app"
-import { useSettingsStore } from "@/store/modules/settings"
-import { useUserStore } from "@/store/modules/user"
-import { UserFilled } from "@element-plus/icons-vue"
-import Breadcrumb from "../Breadcrumb/index.vue"
-import Hamburger from "../Hamburger/index.vue"
-import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
-import Screenfull from "@/components/Screenfull/index.vue"
-import Notify from "@/components/Notify/index.vue"
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { UserFilled } from '@element-plus/icons-vue'
+import Breadcrumb from '../Breadcrumb/index.vue'
+import Hamburger from '../Hamburger/index.vue'
+import { useAppStore } from '@/store/modules/app'
+import { useSettingsStore } from '@/store/modules/settings'
+import { useUserStore } from '@/store/modules/user'
+import ThemeSwitch from '@/components/ThemeSwitch/index.vue'
+import Screenfull from '@/components/Screenfull/index.vue'
+import Notify from '@/components/Notify/index.vue'
 
 const router = useRouter()
 const appStore = useAppStore()
@@ -34,13 +34,13 @@ const toggleSidebar = () => {
 }
 const logout = () => {
   userStore.logout()
-  router.push("/login")
+  router.push('/login')
 }
 </script>
 
 <template>
   <div class="navigation-bar">
-    <Hamburger :is-active="sidebar.opened" class="hamburger" @toggle-click="toggleSidebar" />
+    <Hamburger :is-active="sidebar.opened" class="hamburger" @toggleClick="toggleSidebar" />
     <Breadcrumb class="breadcrumb" />
     <div class="right-menu">
       <Screenfull v-if="showScreenfull" class="right-menu-item" />

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useFullscreenLoading } from "@/hooks/useFullscreenLoading"
-import { getSuccessApi, getErrorApi } from "@/api/hook-demo/use-fullscreen-loading"
-import { ElMessage } from "element-plus"
+import { ElMessage } from 'element-plus'
+import { useFullscreenLoading } from '@/hooks/useFullscreenLoading'
+import { getErrorApi, getSuccessApi } from '@/api/hook-demo/use-fullscreen-loading'
 
 const svg = `
   <path class="path" d="
@@ -15,10 +15,10 @@ const svg = `
 `
 
 const options = {
-  text: "即将发生错误...",
-  background: "#F56C6C20",
+  text: '即将发生错误...',
+  background: '#F56C6C20',
   svg,
-  svgViewBox: "-10, -10, 50, 50"
+  svgViewBox: '-10, -10, 50, 50',
 }
 
 const querySuccess = async () => {
@@ -29,7 +29,8 @@ const querySuccess = async () => {
 const queryError = async () => {
   try {
     await useFullscreenLoading(getErrorApi, options)()
-  } catch (err: any) {
+  }
+  catch (err: any) {
     ElMessage.error(err.message)
   }
 }
@@ -38,7 +39,11 @@ const queryError = async () => {
 <template>
   <div class="app-container">
     <h4>该示例是演示：通过将要执行的函数传递给 hook，让 hook 自动开启全屏 loading，函数执行结束后自动关闭 loading</h4>
-    <el-button @click="querySuccess">查询成功</el-button>
-    <el-button @click="queryError">查询失败</el-button>
+    <el-button @click="querySuccess">
+      查询成功
+    </el-button>
+    <el-button @click="queryError">
+      查询失败
+    </el-button>
   </div>
 </template>

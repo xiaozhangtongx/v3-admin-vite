@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref } from "vue"
-import { ElScrollbar } from "element-plus"
-import { ArrowLeft, ArrowRight } from "@element-plus/icons-vue"
-import { useSettingsStore } from "@/store/modules/settings"
-import Screenfull from "@/components/Screenfull/index.vue"
+import { computed, ref } from 'vue'
+import { ElScrollbar } from 'element-plus'
+import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
+import { useSettingsStore } from '@/store/modules/settings'
+import Screenfull from '@/components/Screenfull/index.vue'
 
 const settingsStore = useSettingsStore()
 
@@ -21,7 +21,7 @@ const scroll = ({ scrollLeft }: { scrollLeft: number }) => {
 }
 
 /** 点击滚动 */
-const scrollTo = (direction: "left" | "right") => {
+const scrollTo = (direction: 'left' | 'right') => {
   let scrollLeft = 0
   /** 可滚动内容的长度 */
   const scrollbarContentRefWidth = scrollbarContentRef.value!.clientWidth
@@ -30,12 +30,13 @@ const scrollTo = (direction: "left" | "right") => {
   /** 最后剩余可滚动的宽度 */
   const lastDistance = scrollbarContentRefWidth - scrollbarRefWidth - currentScrollLeft
   // 没有横向滚动条，直接结束
-  if (scrollbarRefWidth > scrollbarContentRefWidth) return
-  if (direction === "left") {
+  if (scrollbarRefWidth > scrollbarContentRefWidth)
+    return
+  if (direction === 'left')
     scrollLeft = Math.max(0, currentScrollLeft - translateDistance)
-  } else {
+  else
     scrollLeft = Math.min(currentScrollLeft + translateDistance, currentScrollLeft + lastDistance)
-  }
+
   scrollbarRef.value!.setScrollLeft(scrollLeft)
 }
 const showScreenfull = computed(() => {
@@ -48,15 +49,15 @@ const showScreenfull = computed(() => {
     <el-icon class="arrow left" @click="scrollTo('left')">
       <ArrowLeft />
     </el-icon>
-    <el-scrollbar ref="scrollbarRef" @scroll="scroll">
+    <ElScrollbar ref="scrollbarRef" @scroll="scroll">
       <div ref="scrollbarContentRef" class="scrollbar-content">
         <slot />
       </div>
-    </el-scrollbar>
+    </ElScrollbar>
     <el-icon class="arrow right" @click="scrollTo('right')">
       <ArrowRight />
     </el-icon>
-    <Screenfull v-if="showScreenfull" element=".app-main" openTips="内容区全屏" class="screenfull" />
+    <Screenfull v-if="showScreenfull" element=".app-main" open-tips="内容区全屏" class="screenfull" />
   </div>
 </template>
 

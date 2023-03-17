@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { ref, watch } from "vue"
-import { useUserStore } from "@/store/modules/user"
+import { ref, watch } from 'vue'
+import { useUserStore } from '@/store/modules/user'
 
 const emit = defineEmits<{
-  (e: "change"): void
+  (e: 'change'): void
 }>()
 
 const userStore = useUserStore()
 const switchRoles = ref(userStore.roles[0])
 watch(switchRoles, async (value) => {
   await userStore.changeRoles(value)
-  emit("change")
+  emit('change')
 })
 </script>
 

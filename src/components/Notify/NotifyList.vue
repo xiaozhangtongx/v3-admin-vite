@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { PropType } from "vue"
-import { type IListItem } from "./data"
+import type { PropType } from 'vue'
+import { type IListItem } from './data'
 
 const props = defineProps({
   list: {
     type: Object as PropType<IListItem[]>,
-    required: true
-  }
+    required: true,
+  },
 })
 </script>
 
 <template>
   <el-empty v-if="props.list.length === 0" />
-  <el-card v-else v-for="(item, index) in props.list" :key="index" shadow="never" class="card-container">
+  <el-card v-for="(item, index) in props.list" v-else :key="index" shadow="never" class="card-container">
     <template #header>
       <div class="card-header">
         <div>
@@ -20,10 +20,12 @@ const props = defineProps({
             <span class="card-title">{{ item.title }}</span>
             <el-tag v-if="item.extra" :type="item.status" effect="plain" size="small">{{ item.extra }}</el-tag>
           </span>
-          <div class="card-time">{{ item.datetime }}</div>
+          <div class="card-time">
+            {{ item.datetime }}
+          </div>
         </div>
         <div v-if="item.avatar" class="card-avatar">
-          <img :src="item.avatar" width="34" />
+          <img :src="item.avatar" width="34">
         </div>
       </div>
     </template>

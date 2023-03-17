@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue"
-import { useRouter } from "vue-router"
-import { useUserStore } from "@/store/modules/user"
-import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue"
-import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
-import { type FormInstance, FormRules } from "element-plus"
-import { getLoginCodeApi } from "@/api/login"
-import { type ILoginRequestData } from "@/api/login/types/login"
+import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { Key, Loading, Lock, Picture, User } from '@element-plus/icons-vue'
+import type { FormInstance, FormRules } from 'element-plus'
+import { useUserStore } from '@/store/modules/user'
+import ThemeSwitch from '@/components/ThemeSwitch/index.vue'
+
+import { getLoginCodeApi } from '@/api/login'
+import { type ILoginRequestData } from '@/api/login/types/login'
 
 const router = useRouter()
 const loginFormRef = ref<FormInstance | null>(null)
@@ -14,21 +15,32 @@ const loginFormRef = ref<FormInstance | null>(null)
 /** 登录按钮 Loading */
 const loading = ref(false)
 /** 验证码图片 URL */
-const codeUrl = ref("")
+const codeUrl = ref('')
+
 /** 登录表单数据 */
 const loginForm: ILoginRequestData = reactive({
-  username: "admin",
-  password: "12345678",
-  code: ""
+  username: 'admin',
+  password: '12345678',
+  code: '',
 })
+/** 创建验证码 */
+const createCode = () => {
+  // 先清空验证码的输入
+  loginForm.code = ''
+  // 获取验证码
+  codeUrl.value = ''
+  getLoginCodeApi().then((res) => {
+    codeUrl.value = res.data
+  })
+}
 /** 登录表单校验规则 */
 const loginFormRules: FormRules = {
-  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [
-    { required: true, message: "请输入密码", trigger: "blur" },
-    { min: 8, max: 16, message: "长度在 8 到 16 个字符", trigger: "blur" }
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 8, max: 16, message: '长度在 8 到 16 个字符', trigger: 'blur' },
   ],
-  code: [{ required: true, message: "请输入验证码", trigger: "blur" }]
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
 }
 /** 登录逻辑 */
 const handleLogin = () => {
@@ -39,31 +51,22 @@ const handleLogin = () => {
         .login({
           username: loginForm.username,
           password: loginForm.password,
-          code: loginForm.code
+          code: loginForm.code,
         })
         .then(() => {
-          router.push({ path: "/" })
+          router.push({ path: '/' })
         })
         .catch(() => {
           createCode()
-          loginForm.password = ""
+          loginForm.password = ''
         })
         .finally(() => {
           loading.value = false
         })
-    } else {
+    }
+    else {
       return false
     }
-  })
-}
-/** 创建验证码 */
-const createCode = () => {
-  // 先清空验证码的输入
-  loginForm.code = ""
-  // 获取验证码
-  codeUrl.value = ""
-  getLoginCodeApi().then((res) => {
-    codeUrl.value = res.data
   })
 }
 
@@ -76,10 +79,15 @@ createCode()
     <ThemeSwitch class="theme-switch" />
     <div class="login-card">
       <div class="title">
-        <img src="@/assets/layout/logo-text-2.png" />
+        <img src="@/assets/layout/logo-text-2.png">
       </div>
       <div class="content">
-        <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" @keyup.enter="handleLogin">
+        <el-form
+          ref="loginFormRef"
+          :model="loginForm"
+          :rules="loginFormRules"
+          @keyup.enter="handleLogin"
+        >
           <el-form-item prop="username">
             <el-input
               v-model.trim="loginForm.username"
@@ -112,7 +120,7 @@ createCode()
               size="large"
             >
               <template #append>
-                <el-image :src="codeUrl" @click="createCode" draggable="false">
+                <el-image :src="codeUrl" draggable="false" @click="createCode">
                   <template #placeholder>
                     <el-icon><Picture /></el-icon>
                   </template>
@@ -123,7 +131,14 @@ createCode()
               </template>
             </el-input>
           </el-form-item>
-          <el-button :loading="loading" type="primary" size="large" @click.prevent="handleLogin"> 登 录 </el-button>
+          <el-button
+            :loading="loading"
+            type="primary"
+            size="large"
+            @click.prevent="handleLogin"
+          >
+            登 录
+          </el-button>
         </el-form>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { ref, onMounted } from "vue"
+import { onMounted, ref } from 'vue'
 
 type OptionValueType = string | number
 
@@ -26,7 +26,7 @@ export function useFetchSelect(props: IFetchSelectProps) {
 
   const loading = ref<boolean>(false)
   const options = ref<ISelectOption[]>([])
-  const value = ref<OptionValueType>("")
+  const value = ref<OptionValueType>('')
 
   /** 调用接口获取数据 */
   const loadData = () => {
@@ -48,6 +48,6 @@ export function useFetchSelect(props: IFetchSelectProps) {
   return {
     loading,
     options,
-    value
+    value,
   }
 }

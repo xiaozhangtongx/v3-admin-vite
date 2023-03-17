@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-import { Expand, Fold } from "@element-plus/icons-vue"
+import { Expand, Fold } from '@element-plus/icons-vue'
 
 const props = defineProps({
   isActive: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const emit = defineEmits<{
-  (e: "toggle-click"): void
+  (e: 'toggleClick'): void
 }>()
 
 const toggleClick = () => {
-  emit("toggle-click")
+  emit('toggleClick')
 }
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useSettingsStore } from "@/store/modules/settings"
+import { useSettingsStore } from '@/store/modules/settings'
 
 const settingsStore = useSettingsStore()
 </script>
@@ -7,7 +7,9 @@ const settingsStore = useSettingsStore()
 <template>
   <div class="drawer-container">
     <div>
-      <h3 class="drawer-title">系统布局配置</h3>
+      <h3 class="drawer-title">
+        系统布局配置
+      </h3>
       <div class="drawer-item">
         <span>显示标签栏</span>
         <el-switch v-model="settingsStore.showTagsView" class="drawer-switch" />

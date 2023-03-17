@@ -1,13 +1,13 @@
 /// <reference types="vitest" />
 
-import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
-import path, { resolve } from "path"
-import vue from "@vitejs/plugin-vue"
-import vueJsx from "@vitejs/plugin-vue-jsx"
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
-import svgLoader from "vite-svg-loader"
-import UnoCSS from "unocss/vite"
-import DefineOptions from "unplugin-vue-define-options/vite"
+import path, { resolve } from 'node:path'
+import { type ConfigEnv, type UserConfigExport, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import svgLoader from 'vite-svg-loader'
+import UnoCSS from 'unocss/vite'
+import DefineOptions from 'unplugin-vue-define-options/vite'
 
 /** 配置项文档：https://cn.vitejs.dev/config */
 export default (configEnv: ConfigEnv): UserConfigExport => {
@@ -19,8 +19,8 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
     resolve: {
       alias: {
         /** @ 符号指向 src 目录 */
-        "@": resolve(__dirname, "./src")
-      }
+        '@': resolve(__dirname, './src'),
+      },
     },
     server: {
       /** 是否开启 HTTPS */
@@ -37,34 +37,34 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
       strictPort: false,
       /** 接口代理 */
       proxy: {
-        "/api/v1": {
-          target: "https://mock.mengxuegu.com/mock/63218b5fb4c53348ed2bc212/api/v1",
+        '/api/v1': {
+          target: 'https://mock.mengxuegu.com/mock/63218b5fb4c53348ed2bc212/api/v1',
           ws: true,
           /** 是否允许跨域 */
           changeOrigin: true,
-          rewrite: (path) => path.replace("/api/v1", "")
-        }
-      }
+          rewrite: path => path.replace('/api/v1', ''),
+        },
+      },
     },
     build: {
       /** 消除打包大小超过 500kb 警告 */
       chunkSizeWarningLimit: 2000,
       /** Vite 2.6.x 以上需要配置 minify: "terser", terserOptions 才能生效 */
-      minify: "terser",
+      minify: 'terser',
       /** 在打包代码时移除 console.log、debugger 和 注释 */
       terserOptions: {
         compress: {
           drop_console: false,
           drop_debugger: true,
-          pure_funcs: ["console.log"]
+          pure_funcs: ['console.log'],
         },
         format: {
           /** 删除注释 */
-          comments: false
-        }
+          comments: false,
+        },
       },
       /** 打包后静态资源目录 */
-      assetsDir: "static"
+      assetsDir: 'static',
     },
     /** Vite 插件 */
     plugins: [
@@ -74,13 +74,13 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
       svgLoader(),
       /** SVG */
       createSvgIconsPlugin({
-        iconDirs: [path.resolve(process.cwd(), "src/icons/svg")],
-        symbolId: "icon-[dir]-[name]"
+        iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
+        symbolId: 'icon-[dir]-[name]',
       }),
       /** UnoCSS */
       UnoCSS(),
       /** DefineOptions 可以更简单的注册组件名称 */
-      DefineOptions()
+      DefineOptions(),
       /** 自动按需引入 (已更改为完整引入，所以注释了) */
       // AutoImport({
       //   dts: "./types/auto-imports.d.ts",
@@ -101,8 +101,8 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
     ],
     /** Vitest 单元测试配置：https://cn.vitest.dev/config */
     test: {
-      include: ["tests/**/*.test.ts"],
-      environment: "jsdom"
-    }
+      include: ['tests/**/*.test.ts'],
+      environment: 'jsdom',
+    },
   }
 }

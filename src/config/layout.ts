@@ -29,7 +29,7 @@ const layoutSettings: ILayoutSettings = {
   showThemeSwitch: true,
   showScreenfull: true,
   showGreyMode: false,
-  showColorWeakness: false
+  showColorWeakness: false,
 }
 
 export default layoutSettings

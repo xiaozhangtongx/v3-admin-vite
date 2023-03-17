@@ -1,16 +1,17 @@
-import { ref } from "vue"
-import { defineStore } from "pinia"
-import { type RouteLocationNormalized } from "vue-router"
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
+import { type RouteLocationNormalized } from 'vue-router'
 
 export type ITagView = Partial<RouteLocationNormalized>
 
-export const useTagsViewStore = defineStore("tags-view", () => {
+export const useTagsViewStore = defineStore('tags-view', () => {
   const visitedViews = ref<ITagView[]>([])
   const cachedViews = ref<string[]>([])
 
-  //#region add
+  // #region add
   const addVisitedView = (view: ITagView) => {
     if (
+      // eslint-disable-next-line array-callback-return
       visitedViews.value.some((v, index) => {
         if (v.path === view.path) {
           if (v.fullPath !== view.fullPath) {
@@ -20,21 +21,22 @@ export const useTagsViewStore = defineStore("tags-view", () => {
           return true
         }
       })
-    ) {
+    )
       return
-    }
+
     visitedViews.value.push(Object.assign({}, view))
   }
   const addCachedView = (view: ITagView) => {
-    if (typeof view.name !== "string") return
-    if (cachedViews.value.includes(view.name)) return
-    if (view.meta?.keepAlive) {
+    if (typeof view.name !== 'string')
+      return
+    if (cachedViews.value.includes(view.name))
+      return
+    if (view.meta?.keepAlive)
       cachedViews.value.push(view.name)
-    }
   }
-  //#endregion
+  // #endregion
 
-  //#region del
+  // #region del
   const delVisitedView = (view: ITagView) => {
     for (const [i, v] of visitedViews.value.entries()) {
       if (v.path === view.path) {
@@ -44,40 +46,43 @@ export const useTagsViewStore = defineStore("tags-view", () => {
     }
   }
   const delCachedView = (view: ITagView) => {
-    if (typeof view.name !== "string") return
+    if (typeof view.name !== 'string')
+      return
     const index = cachedViews.value.indexOf(view.name)
     index > -1 && cachedViews.value.splice(index, 1)
   }
-  //#endregion
+  // #endregion
 
-  //#region delOthers
+  // #region delOthers
   const delOthersVisitedViews = (view: ITagView) => {
     visitedViews.value = visitedViews.value.filter((v) => {
       return v.meta?.affix || v.path === view.path
     })
   }
   const delOthersCachedViews = (view: ITagView) => {
-    if (typeof view.name !== "string") return
+    if (typeof view.name !== 'string')
+      return
     const index = cachedViews.value.indexOf(view.name)
     if (index > -1) {
       cachedViews.value = cachedViews.value.slice(index, index + 1)
-    } else {
+    }
+    else {
       // 如果 index = -1, 没有缓存的 tags
       cachedViews.value = []
     }
   }
-  //#endregion
+  // #endregion
 
-  //#region delAll
+  // #region delAll
   const delAllVisitedViews = () => {
     // keep affix tags
-    const affixTags = visitedViews.value.filter((tag) => tag.meta?.affix)
+    const affixTags = visitedViews.value.filter(tag => tag.meta?.affix)
     visitedViews.value = affixTags
   }
   const delAllCachedViews = () => {
     cachedViews.value = []
   }
-  //#endregion
+  // #endregion
 
   return {
     visitedViews,
@@ -89,6 +94,6 @@ export const useTagsViewStore = defineStore("tags-view", () => {
     delOthersVisitedViews,
     delOthersCachedViews,
     delAllVisitedViews,
-    delAllCachedViews
+    delAllCachedViews,
   }
 })

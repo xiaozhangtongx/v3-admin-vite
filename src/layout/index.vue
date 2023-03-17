@@ -1,26 +1,15 @@
 <script lang="ts" setup>
-import { computed } from "vue"
-import { useAppStore, DeviceType } from "@/store/modules/app"
-import { useSettingsStore } from "@/store/modules/settings"
-import { AppMain, NavigationBar, Settings, Sidebar, TagsView, RightPanel } from "./components"
-import useResize from "./hooks/useResize"
+import { computed } from 'vue'
+import { AppMain, NavigationBar, RightPanel, Settings, Sidebar, TagsView } from './components'
+import useResize from './hooks/useResize'
+import { DeviceType, useAppStore } from '@/store/modules/app'
+import { useSettingsStore } from '@/store/modules/settings'
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
 
 /** Layout 布局响应式 */
 useResize()
-
-const classObj = computed(() => {
-  return {
-    hideSidebar: !appStore.sidebar.opened,
-    openSidebar: appStore.sidebar.opened,
-    withoutAnimation: appStore.sidebar.withoutAnimation,
-    mobile: appStore.device === DeviceType.Mobile,
-    showGreyMode: showGreyMode.value,
-    showColorWeakness: showColorWeakness.value
-  }
-})
 
 const showSettings = computed(() => {
   return settingsStore.showSettings
@@ -40,6 +29,17 @@ const showColorWeakness = computed(() => {
 const handleClickOutside = () => {
   appStore.closeSidebar(false)
 }
+
+const classObj = computed(() => {
+  return {
+    hideSidebar: !appStore.sidebar.opened,
+    openSidebar: appStore.sidebar.opened,
+    withoutAnimation: appStore.sidebar.withoutAnimation,
+    mobile: appStore.device === DeviceType.Mobile,
+    showGreyMode: showGreyMode.value,
+    showColorWeakness: showColorWeakness.value,
+  }
+})
 </script>
 
 <template>

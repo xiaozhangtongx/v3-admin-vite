@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed } from "vue"
-import { useRoute } from "vue-router"
-import { useTagsViewStore } from "@/store/modules/tags-view"
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useTagsViewStore } from '@/store/modules/tags-view'
 
 const route = useRoute()
 const tagsViewStore = useTagsViewStore()

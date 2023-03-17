@@ -1,8 +1,8 @@
-import { type LoadingOptions, ElLoading } from "element-plus"
+import { ElLoading, type LoadingOptions } from 'element-plus'
 
 const defaultOptions = {
   lock: true,
-  text: "加载中..."
+  text: '加载中...',
 }
 
 interface ILoadingInstance {
@@ -55,7 +55,8 @@ export const useFullscreenLoading: IUseFullscreenLoading = (fn, options = {}) =>
         .finally(() => {
           hideLoading()
         })
-    } catch (err) {
+    }
+    catch (err) {
       hideLoading()
       throw err
     }

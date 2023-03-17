@@ -2,7 +2,6 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
     "vue.vscode-typescript-vue-plugin",
     "vue.volar",
     "antfu.unocss",
