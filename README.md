@@ -1,160 +1,112 @@
 <div align="center">
   <img alt="V3 Admin Vite Logo" width="120" height="120" src="./src/assets/layout/logo.png">
   <h1>V3 Admin Vite</h1>
-  <span>English | <a href="./README.zh-CN.md">中文</a></span>
 </div>
 
-## ⚡ Introduction
+## ⚡ 简介
 
-v3-admin-vite is a free and open source middle and background management system basic solution, based on mainstream framework such as Vue3, TypeScript, Element Plus, Pinia and Vite.
+本仓库是在免费开源的中后台管理系统[Vue3  Admin Vite](https://github.com/un-pany/v3-admin-vite)的基础上二次开发的，基于 Vue3、TypeScript、Element Plus、Pinia 和 Vite 等主流技术.
 
-- Vue-Cli 5.x: [v3-admin](https://github.com/un-pany/v3-admin)
-- Electron desktop: [v3-electron-vite](https://github.com/un-pany/v3-electron-vite)
+## 特性
 
-## Feature
+- **Vue3**：采用 Vue3 + script setup 最新的 Vue3 组合式 API
+- **Element Plus**：Element UI 的 Vue3 版本
+- **Pinia**: 传说中的 Vuex5
+- **Vite**：真的很快
+- **Vue Router**：路由路由
+- **TypeScript**：JavaScript 语言的超集
+- **PNPM**：更快速的，节省磁盘空间的包管理工具
+- **Scss**：和 Element Plus 保持一致
+- **CSS 变量**：主要控制项目的布局和颜色
+- **ESlint**：代码校验
+- **Axios**：发送网络请求（已封装好）
+- **UnoCSS**：具有高性能且极具灵活性的即时原子化 CSS 引擎
+- **注释**：各个配置项都写有尽可能详细的注释
+- **兼容移动端**: 布局兼容移动端页面分辨率
 
-- **Vue3**：The latest Vue3 composition API using Vue3 + script setup
-- **Element Plus**：Vue3 version of Element UI
-- **Pinia**: An alternative to Vuex in Vue3
-- **Vite**：Really fast
-- **Vue Router**：router
-- **TypeScript**：JavaScript With Syntax For Types
-- **PNPM**：Faster, disk space saving package management tool
-- **Scss**：Consistent with Element Plus
-- **CSS variable**：Mainly controls the layout and color of the item
-- **ESlint**：Code verification
-- **Prettier**： Code formatting
-- **Axios**: Promise based HTTP client (encapsulated)
-- **UnoCSS**: Real-time atomized CSS engine with high performance and flexibility
-- **Annotation**：Each configuration item is written with as detailed comments as possible
-- **Mobile Compatible**: The layout is compatible with mobile page resolution
+## 功能
 
-## Functions
+- **用户管理**：登录、登出演示
+- **权限管理**：内置页面权限（动态路由）、指令权限、权限函数、路由守卫
+- **多环境**：开发环境（development）、预发布环境（staging）、正式环境（production）
+- **多主题**：内置普通、黑暗、深蓝三种主题模式
+- **错误页面**: 403、404
+- **Dashboard**：根据不同用户显示不同的 Dashboard 页面
+- **其他内置功能**：SVG、动态侧边栏、动态面包屑、标签页快捷导航、Screenfull 全屏、自适应收缩侧边栏
 
-- **User management**: log in, log out of the demo
-- **Authority management**: Built-in page permissions (dynamic routing), instruction permissions, permission functions
-- **Multiple Environments**: Development, Staging, Production
-- **Multiple themes**: Normal, Dark, Dark Blue, theme modes
-- **Error page**: 403, 404
-- **Dashboard**: Display different Dashboard pages according to different users
-- **Other functions**：SVG, Dynamic Sidebar, Dynamic Breadcrumb Navigation, Tabbed Navigation, Screenfull, Adaptive Shrink Sidebar
+## 在线预览
 
-## 📚 Document
+| 位置         | 账号            | 链接                                            |
+| ------------ | --------------- | ----------------------------------------------- |
+| github-pages | admin 或 editor | [链接](https://www.xiaozhangtx.top/v3-admin-vite) |
 
-[Chinese documentation](https://juejin.cn/post/7089377403717287972)
-
-[Chinese getting started tutorial](https://juejin.cn/column/7207659644487139387)
-
-## Gitee repository
-
-[Gitee](https://gitee.com/un-pany/v3-admin-vite)
-
-## Online preview
-
-| Location     | account             | Link                                            |
-| ------------ | ------------------- | ----------------------------------------------- |
-| github-pages | `admin` or `editor` | [Link](https://un-pany.github.io/v3-admin-vite) |
-
-## 🚀 Development
+## 🚀 开发
 
 ```bash
-# configure
-1. installation of the recommended plugins in the .vscode directory
-3. node version 16+
-4. pnpm version 7.x
+# 配置
+1. 一键安装 .vscode 目录中推荐的插件
+3. node 版本 16+
+4. pnpm 版本 7.x
 
-# clone
-git clone https://github.com/un-pany/v3-admin-vite.git
+# 克隆项目
+git clone https://github.com/xiaozhangtongx/v3-admin-vite.git
 
-# enter the project directory
+# 进入项目目录
 cd v3-admin-vite
 
-# install dependencies
+# 安装依赖
 pnpm i
 
-# start the service
+# 启动服务
 pnpm dev
 ```
 
-## ✔️ Preview
+## ✔️ 预览
 
 ```bash
-# stage environment
+# 预览预发布环境
 pnpm preview:stage
 
-# prod environment
+# 预览正式环境
 pnpm preview:prod
 ```
 
-## 📦️ Multi-environment packaging
+## 📦️ 多环境打包
 
 ```bash
-# build the stage environment
+# 构建预发布环境
 pnpm build:stage
 
-# build the prod environment
+# 构建正式环境
 pnpm build:prod
 ```
 
-## 🔧 Code inspection
+## 🔧 代码检查
 
 ```bash
-# code formatting
+# 代码格式化
 pnpm lint
-
-# unit test
-pnpm test
 ```
 
-## Git commit specification reference
+## Git 提交规范参考
 
-- `feat` add new functions
-- `fix` Fix issues/bugs
-- `perf` Optimize performance
-- `style` Change the code style without affecting the running result
-- `refactor` Re-factor code
-- `revert` Undo changes
-- `test` Test related, does not involve changes to business code
-- `docs` Documentation and Annotation
-- `chore` Updating dependencies/modifying scaffolding configuration, etc.
-- `workflow` Work flow Improvements
-- `ci` CICD
-- `types` Type definition
-- `wip` In development
-
-## Project preview
-
-![preview1.png](./src/assets/docs/preview1.png)
-![preview2.png](./src/assets/docs/preview2.png)
-![preview3.png](./src/assets/docs/preview3.png)
-
-## 💕 Contributors
-
-Thanks to all the contributors!
-
-<a href="https://github.com/un-pany/v3-admin-vite/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=un-pany/v3-admin-vite" />
-</a>
-
-## 💕 Thanks for the sponsorship (the cost of sponsorship was used to send red envelopes in the group~)
-
-| Name                                               | Avatar                                                                                        |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| <a href="https://github.com/a3305278">a3305278</a> | <img src="https://avatars.githubusercontent.com/u/30458650?v=4" width="64px" height="64px" /> |
-
-## 💕 Thanks star
-
-Small projects are not easy to get a star, if you like this project, welcome to support a star! This is the only motivation for the author to maintain it on an ongoing basis (whisper: it's free after all)
-
-## Group
-
-QQ group：1014374415 (left) && add me on WeChat，Invite you to join WeChat group (right)
-
-![qq.png](./src/assets/docs/qq.png)
-![wechat.png](./src/assets/docs/wechat.png)
+- `feat` 增加新的业务功能
+- `fix` 修复业务问题/BUG
+- `perf` 优化性能
+- `style` 更改代码风格, 不影响运行结果
+- `refactor` 重构代码
+- `revert` 撤销更改
+- `test` 测试相关, 不涉及业务代码的更改
+- `docs` 文档和注释相关
+- `chore` 更新依赖/修改脚手架配置等琐事
+- `workflow` 工作流改进
+- `ci` 持续集成相关
+- `types` 类型定义文件更改
+- `wip` 开发中
 
 ## 📄 License
 
 [MIT](./LICENSE)
 
-Copyright (c) 2022 [pany](https://github.com/pany-ang)
+Copyright (c) 2023 [xiaozhangtx](https://github.com/xiaozhangtongx)
+
