@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <img :class="props.name" class="svg-icon">
+  <span :class="props.name" class="svg-icon" />
 </template>
 
 <style lang="scss" scoped>
@@ -17,5 +17,6 @@ const props = defineProps({
   height: 1em;
   fill: currentColor;
   overflow: hidden;
+  border: none;
 }
 </style>

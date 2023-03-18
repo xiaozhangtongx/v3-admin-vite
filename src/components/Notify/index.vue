@@ -60,7 +60,7 @@ const handleHistory = () => {
       <template #reference>
         <el-badge :value="badgeValue" :max="badgeMax" :hidden="badgeValue === 0">
           <el-tooltip effect="dark" content="消息通知" placement="bottom">
-            <svg-icon class="i-ph-bell-simple-bold text-xl" />
+            <svg-icon name="i-ph-bell-simple-bold text-xl" />
           </el-tooltip>
         </el-badge>
       </template>

@@ -74,6 +74,22 @@ export const constantRoutes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/vueuse',
+    component: Layout,
+    redirect: '/vueuse/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/vueuse/index.vue'),
+        name: 'VueUse',
+        meta: {
+          title: 'vueuse',
+          svgIcon: 'i-logos-vueuse',
+        },
+      },
+    ],
+  },
+  {
     path: '/link',
     component: Layout,
     children: [

@@ -12,7 +12,7 @@ const handleSetTheme = (name: ThemeName) => {
   <el-dropdown trigger="click" @command="handleSetTheme">
     <div>
       <el-tooltip effect="dark" content="主题模式" placement="bottom">
-        <svg-icon class="i-icon-park-outline-theme text-xl" />
+        <svg-icon name="i-icon-park-outline-theme text-xl" />
       </el-tooltip>
     </div>
     <template #dropdown>
