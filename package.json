@@ -1,23 +1,23 @@
 {
   "name": "v3-admin-vite",
   "version": "3.3.3",
-  "description": "一个免费开源的中后台管理系统基础解决方案，基于 Vue3、TypeScript、Element Plus、Pinia 和 Vite 等主流技术.",
+  "description": "基于v3-admin-vite二次开发的后台管理模板",
   "author": {
-    "name": "pany",
-    "email": "939630029@qq.com",
-    "url": "https://github.com/pany-ang"
+    "name": "xiaozhangtx",
+    "email": "2446159171@qq.com",
+    "url": "https://github.com/xiaozhangtongx"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/un-pany/v3-admin-vite.git"
+    "url": "https://github.com/xiaozhangtongx/v3-admin-vite.git"
   },
   "keywords": [
     "vue",
     "vue3",
     "admin",
     "vue-admin",
-    "vue3-admin",
+    "vue3-admin-vite",
     "vite",
     "vite-admin",
     "element-plus",
