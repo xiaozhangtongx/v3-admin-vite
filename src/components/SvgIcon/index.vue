@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <span :class="props.name" class="svg-icon" />
+  <section :class="props.name" class="svg-icon" />
 </template>
 
 <style lang="scss" scoped>
