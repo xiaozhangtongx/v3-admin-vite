@@ -103,7 +103,8 @@ pnpm lint
 - `types` 类型定义文件更改
 - `wip` 开发中
 
-## 后期修改计划
+## 😔 后期修改计划
+
 - [ ] 全面使用`UnoCss`,取消`Sass`
 - [ ] 加入`echart`等数据展示页
 - [ ] 修改登录页样式
@@ -112,9 +113,14 @@ pnpm lint
 - [ ] 开发一个基于`naiveui`组件库的模板
 - [ ] ...
 
+## 🫤 修改之处
+
+- 移除`SvgIcon`,全面使用`UnoCss图标`
+- 移除`prettier` 使用`@antfu/eslint-config`
+- 组件按需加载
+
 ## 📄 License
 
 [MIT](./LICENSE)
 
 Copyright (c) 2023 [xiaozhangtx](https://github.com/xiaozhangtongx)
-
