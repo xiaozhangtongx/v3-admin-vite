@@ -1,1 +1,0 @@
-import{j as e,K as r,m as s,J as a,o}from"./index-f84eb1d7.js";import{E as t}from"./el-card-947bdca3.js";import{_ as n}from"./_plugin-vue_export-helper-1b428a4d.js";const i={class:"app-container"};const p=n({},[["render",function(n,p){const m=a("router-view"),u=t;return o(),e("div",i,[r(u,{header:"menu 1"},{default:s((()=>[r(m)])),_:1})])}]]);export{p as default};
