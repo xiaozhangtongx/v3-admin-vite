@@ -74,7 +74,7 @@
     "sass": "^1.59.3",
     "terser": "^5.16.6",
     "typescript": "^5.0.2",
-    "unocss": "^0.51.8",
+    "unocss": "^0.53.1",
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
     "unplugin-vue-define-options": "^1.2.4",
