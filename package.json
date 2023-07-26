@@ -61,7 +61,7 @@
     "@iconify/json": "^2.2.36",
     "@types/js-cookie": "^3.0.3",
     "@types/lodash-es": "^4.17.7",
-    "@types/node": "^18.15.3",
+    "@types/node": "^20.4.5",
     "@types/nprogress": "^0.2.0",
     "@types/path-browserify": "^1.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
